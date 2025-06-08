@@ -15,8 +15,9 @@
 ################################################################################
 
 FROM gcr.io/oss-fuzz-base/base-builder
-RUN \
-  apt-get update && apt-get install -y \
+
+# Install dependencies for building YARA
+RUN apt-get update && apt-get install -y \
   automake \
   autoconf \
   make \
@@ -25,6 +26,12 @@ RUN \
   bison \
   flex
 
+# Clone YARA source
 RUN git clone --depth 1 https://github.com/VirusTotal/yara.git
+
+# Copy the build script
 COPY build.sh $SRC/
-WORKDIR yara
+COPY yara_rules_fuzzer.cc $SRC/
+
+# OSS-Fuzz entry point
+WORKDIR /src

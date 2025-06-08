@@ -14,25 +14,23 @@
 # limitations under the License.
 #
 ################################################################################
+#!/bin/bash -eu
 
+# Enter the YARA source directory
+cd $SRC/yara
+
+# Prepare the build
 ./bootstrap.sh
 ./configure --enable-macho --enable-debug --enable-dex --enable-dotnet --without-crypto
-
 make clean
 make -j$(nproc) all
 make install
 
-fuzzers=$(find $SRC/yara/tests/oss-fuzz/ -name "*.cc")
-for f in $fuzzers; do
-  fuzzer_name=$(basename -s ".cc" $f)
-  echo "Building $fuzzer_name"
-  $CXX $CXXFLAGS -std=c++11 -I. $f -o $OUT/$fuzzer_name \
-    ./.libs/libyara.a \
-    $LIB_FUZZING_ENGINE
-  if [ -d "$SRC/yara/tests/oss-fuzz/${fuzzer_name}_corpus" ]; then
-    zip -j $OUT/${fuzzer_name}_seed_corpus.zip $SRC/yara/tests/oss-fuzz/${fuzzer_name}_corpus/*
-  fi
-done
+# Build your specific fuzz target
+FUZZER_SRC=$SRC/yara_rules_fuzzer.cc
+FUZZER_BIN=$OUT/yara_rules_fuzzer
 
-find $SRC/yara/tests/oss-fuzz -name \*.dict -exec cp {} $OUT \;
-find $SRC/yara/tests/oss-fuzz -name \*.options -exec cp {} $OUT \;
+# Build the fuzzer binary
+$CXX $CXXFLAGS -std=c++11 -I$SRC/yara/libyara/include \
+    $FUZZER_SRC -o $FUZZER_BIN \
+    /usr/local/lib/libyara.a $LIB_FUZZING_ENGINE
