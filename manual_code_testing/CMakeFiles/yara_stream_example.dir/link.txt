@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/yara_stream_example.dir/fuzz_code.cc.o -o yara_stream_example  -Wl,-rpath,/usr/local/lib /usr/local/lib/libyara.so 

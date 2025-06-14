@@ -1,0 +1,1 @@
+clang++ CMakeFiles/fuzz_target.dir/fuzz_target.cc.o -o fuzz_target   -L/usr/local/lib  -Wl,-rpath,/usr/local/lib -lyara -fsanitize=fuzzer -fsanitize=address 
