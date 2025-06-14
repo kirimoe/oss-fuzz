@@ -15,8 +15,6 @@ This guide documents the process for manually testing YARA API functions before 
 Install the necessary dependencies on your system:
 
 ```bash
-bash
-
 sudo apt update
 
 sudo apt install clang llvm pkg-config g++ automake autoconf make libtool bison flex libpcre3-dev libssl-dev
@@ -29,11 +27,10 @@ sudo apt install clang llvm pkg-config g++ automake autoconf make libtool bison 
 Build YARA by running the following commands:
 
 ```bash
-bash
-
 cd yara
 
 ./bootstrap.sh
+
 ./configure
 
 make
@@ -44,8 +41,6 @@ make
 Compile your YARA rule into a `.yarc` file using the `yarac` compiler in the `yara` directory:
 
 ```bash
-bash
-
 ./yara/yarac test_example/valid_rule.yar test_example/valid_rule.yarc
 ```
 
@@ -54,8 +49,6 @@ bash
 To compile the `fuzz_target.cc` file, run:
 
 ```bash
-bash
-
 cmake .
 
 make
@@ -68,8 +61,6 @@ This will generate the `fuzz_target` binary.
 Execute the fuzz target with the compiled rule as input:
 
 ```bash
-bash
-
 ./fuzz_target < test_example/valid_rule.yarc
 ```
 
