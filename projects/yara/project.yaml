@@ -11,3 +11,12 @@ fuzzing_engines:
 architectures:
   - x86_64
 main_repo: "https://github.com/VirusTotal/yara"
+
+
+# Optional: specify seed corpus (if you have one)
+seed_corpus:
+  - ./build/corpus/yara/yara_rules_fuzzer
+
+# Optional: specify fuzz targets (if you have multiple)
+fuzz_targets:
+  - ./projects/yara/yara_rules_fuzzer

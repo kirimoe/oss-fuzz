@@ -14,14 +14,23 @@
 # limitations under the License.
 #
 ################################################################################
-#!/bin/bash -eu
+#!/bin/bash
+set -e
 
-# Enter the YARA source directory
 cd $SRC/yara
+
+echo "Listing files in current directory:"
+ls -al
 
 # Prepare the build
 ./bootstrap.sh
+# Alternatively, you can use autogen.sh if bootstrap.sh isn't enough
+# ./autogen.sh
+
+# Configure with options you want to enable
 ./configure --enable-macho --enable-debug --enable-dex --enable-dotnet --without-crypto
+
+# Clean and build
 make clean
 make -j$(nproc) all
 make install
