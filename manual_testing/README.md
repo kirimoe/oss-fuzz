@@ -77,3 +77,11 @@ The `fuzz_target.cc` is already configured to fuzz the `yr_rules_load_stream` fu
 3. If successful, the target prints a success message.
 
 You can modify `fuzz_target.cc` to test other YARA APIs. For example, to test the `yr_rules_scan_file` function, you could add the following code:
+
+```cpp
+// Example: Scan a file with loaded rules
+int scan_result = yr_rules_scan_file(rules, "example_file.txt", 0, nullptr, nullptr, 0);
+if (scan_result == ERROR_SUCCESS) {
+    std::cout << "File scanned successfully!" << std::endl;
+}
+```
