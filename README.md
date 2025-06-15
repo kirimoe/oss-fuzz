@@ -1,42 +1,6 @@
-# OSS-Fuzz: Continuous Fuzzing for Open Source Software
+# OSS-Fuzz: Continuous Fuzzing for Just YARA
 
-[Fuzz testing] is a well-known technique for uncovering programming errors in
-software. Many of these detectable errors, like [buffer overflow], can have
-serious security implications. Google has found [thousands] of security
-vulnerabilities and stability bugs by deploying [guided in-process fuzzing of
-Chrome components], and we now want to share that service with the open source
-community.
-
-[Fuzz testing]: https://en.wikipedia.org/wiki/Fuzz_testing
-[buffer overflow]: https://en.wikipedia.org/wiki/Buffer_overflow
-[thousands]: https://issues.chromium.org/issues?q=label:Stability-LibFuzzer%20-status:Duplicate,WontFix
-[guided in-process fuzzing of Chrome components]: https://security.googleblog.com/2016/08/guided-in-process-fuzzing-of-chrome.html
-
-In cooperation with the [Core Infrastructure Initiative] and the [OpenSSF],
-OSS-Fuzz aims to make common open source software more secure and stable by
-combining modern fuzzing techniques with scalable, distributed execution.
-Projects that do not qualify for OSS-Fuzz (e.g. closed source) can run their own
-instances of [ClusterFuzz] or [ClusterFuzzLite].
-
-[Core Infrastructure Initiative]: https://www.coreinfrastructure.org/
-[OpenSSF]: https://www.openssf.org/
-
-We support the [libFuzzer], [AFL++], and [Honggfuzz] fuzzing engines in
-combination with [Sanitizers], as well as [ClusterFuzz], a distributed fuzzer
-execution environment and reporting tool.
-
-[libFuzzer]: https://llvm.org/docs/LibFuzzer.html
-[AFL++]: https://github.com/AFLplusplus/AFLplusplus
-[Honggfuzz]: https://github.com/google/honggfuzz
-[Sanitizers]: https://github.com/google/sanitizers
-[ClusterFuzz]: https://github.com/google/clusterfuzz
-[ClusterFuzzLite]: https://google.github.io/clusterfuzzlite/
-
-Currently, OSS-Fuzz supports C/C++, Rust, Go, Python, Java/JVM, and JavaScript code. Other languages
-supported by [LLVM] may work too. OSS-Fuzz supports fuzzing x86_64 and i386
-builds.
-
-[LLVM]: https://llvm.org
+This repo aims to use OSS Fuzz to fuzz test the YARA's functionality of parsing yara compiled rules
 
 ## Overview
 ![OSS-Fuzz process diagram](docs/images/process.png)
