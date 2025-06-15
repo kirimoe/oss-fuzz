@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/kanra/oss-fuzz/manual_fuzz_testing/fuzz_target.cc" "CMakeFiles/fuzz_target.dir/fuzz_target.cc.o" "gcc" "CMakeFiles/fuzz_target.dir/fuzz_target.cc.o.d"
+  "/home/kanra/oss-fuzz/manual_libfuzz_test/fuzz_test_code.cc" "CMakeFiles/fuzz_test_code.dir/fuzz_test_code.cc.o" "gcc" "CMakeFiles/fuzz_test_code.dir/fuzz_test_code.cc.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

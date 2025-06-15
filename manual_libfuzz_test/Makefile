@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kanra/oss-fuzz/manual_fuzz_testing
+CMAKE_SOURCE_DIR = /home/kanra/oss-fuzz/manual_libfuzz_test
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kanra/oss-fuzz/manual_fuzz_testing
+CMAKE_BINARY_DIR = /home/kanra/oss-fuzz/manual_libfuzz_test
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kanra/oss-fuzz/manual_fuzz_testing/CMakeFiles /home/kanra/oss-fuzz/manual_fuzz_testing//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kanra/oss-fuzz/manual_libfuzz_test/CMakeFiles /home/kanra/oss-fuzz/manual_libfuzz_test//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kanra/oss-fuzz/manual_fuzz_testing/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kanra/oss-fuzz/manual_libfuzz_test/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -117,41 +117,41 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named fuzz_target
+# Target rules for targets named fuzz_test_code
 
 # Build rule for target.
-fuzz_target: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 fuzz_target
-.PHONY : fuzz_target
+fuzz_test_code: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 fuzz_test_code
+.PHONY : fuzz_test_code
 
 # fast build rule for target.
-fuzz_target/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/fuzz_target.dir/build.make CMakeFiles/fuzz_target.dir/build
-.PHONY : fuzz_target/fast
+fuzz_test_code/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fuzz_test_code.dir/build.make CMakeFiles/fuzz_test_code.dir/build
+.PHONY : fuzz_test_code/fast
 
-fuzz_target.o: fuzz_target.cc.o
-.PHONY : fuzz_target.o
+fuzz_test_code.o: fuzz_test_code.cc.o
+.PHONY : fuzz_test_code.o
 
 # target to build an object file
-fuzz_target.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/fuzz_target.dir/build.make CMakeFiles/fuzz_target.dir/fuzz_target.cc.o
-.PHONY : fuzz_target.cc.o
+fuzz_test_code.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fuzz_test_code.dir/build.make CMakeFiles/fuzz_test_code.dir/fuzz_test_code.cc.o
+.PHONY : fuzz_test_code.cc.o
 
-fuzz_target.i: fuzz_target.cc.i
-.PHONY : fuzz_target.i
+fuzz_test_code.i: fuzz_test_code.cc.i
+.PHONY : fuzz_test_code.i
 
 # target to preprocess a source file
-fuzz_target.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/fuzz_target.dir/build.make CMakeFiles/fuzz_target.dir/fuzz_target.cc.i
-.PHONY : fuzz_target.cc.i
+fuzz_test_code.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fuzz_test_code.dir/build.make CMakeFiles/fuzz_test_code.dir/fuzz_test_code.cc.i
+.PHONY : fuzz_test_code.cc.i
 
-fuzz_target.s: fuzz_target.cc.s
-.PHONY : fuzz_target.s
+fuzz_test_code.s: fuzz_test_code.cc.s
+.PHONY : fuzz_test_code.s
 
 # target to generate assembly for a file
-fuzz_target.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/fuzz_target.dir/build.make CMakeFiles/fuzz_target.dir/fuzz_target.cc.s
-.PHONY : fuzz_target.cc.s
+fuzz_test_code.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fuzz_test_code.dir/build.make CMakeFiles/fuzz_test_code.dir/fuzz_test_code.cc.s
+.PHONY : fuzz_test_code.cc.s
 
 # Help Target
 help:
@@ -161,10 +161,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... fuzz_target"
-	@echo "... fuzz_target.o"
-	@echo "... fuzz_target.i"
-	@echo "... fuzz_target.s"
+	@echo "... fuzz_test_code"
+	@echo "... fuzz_test_code.o"
+	@echo "... fuzz_test_code.i"
+	@echo "... fuzz_test_code.s"
 .PHONY : help
 
 

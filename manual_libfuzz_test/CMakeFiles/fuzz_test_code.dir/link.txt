@@ -1,0 +1,1 @@
+/usr/bin/c++  -fsanitize=address,undefined CMakeFiles/fuzz_test_code.dir/fuzz_test_code.cc.o -o fuzz_test_code   -L/usr/local/lib  -Wl,-rpath,/usr/local/lib -lyara 

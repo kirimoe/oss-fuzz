@@ -6,6 +6,7 @@ auto_ccs:
 sanitizers:
   - address
   - undefined
+  - memory
 fuzzing_engines:
   - libfuzzer
 architectures:

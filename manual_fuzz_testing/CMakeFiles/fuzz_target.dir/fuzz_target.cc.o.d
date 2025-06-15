@@ -1,6 +1,6 @@
 CMakeFiles/fuzz_target.dir/fuzz_target.cc.o: \
   /usr/lib/llvm-18/lib/clang/18/share/asan_ignorelist.txt \
-  /home/kanra/oss-fuzz/manual_testing/fuzz_target.cc \
+  /home/kanra/oss-fuzz/manual_fuzz_testing/fuzz_target.cc \
   /usr/include/stdio.h \
   /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
   /usr/include/features.h /usr/include/features-time64.h \

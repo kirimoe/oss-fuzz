@@ -24,8 +24,6 @@ ls -al
 
 # Prepare the build
 ./bootstrap.sh
-# Alternatively, you can use autogen.sh if bootstrap.sh isn't enough
-# ./autogen.sh
 
 # Configure with options you want to enable
 ./configure --enable-macho --enable-debug --enable-dex --enable-dotnet --without-crypto

@@ -83,6 +83,11 @@ The program may crash depending on the extent of corruption.
 
 ### Screenshot
 
+Compiling the code
 ![alt text](<Output_Images/Screenshot from 2025-06-14 18-39-46.png>)
+
+Compiling the test yara rule
 ![alt text](<Output_Images/Screenshot from 2025-06-14 18-41-10.png>)
+
+Comparing the program behaviour with tampered input file
 ![alt text](<Output_Images/Screenshot from 2025-06-14 18-41-52.png>)
