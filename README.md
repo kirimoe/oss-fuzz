@@ -30,7 +30,7 @@ mkdir -p ~/oss-fuzz/build/corpus/yara/yara_rules_fuzzer
 ```
 ##### run the fuzzer
 ```bash
-sudo python3 infra/helper.py run_fuzzer --corpus-dir=./build/corpus/yara/yara_rules_fuzzer yara yara_rules_fuzzer -- -max_total_time=30
+sudo python3 infra/helper.py run_fuzzer yara yara_rules_fuzzer -- -max_total_time=30
 ```
 ##### check the coverage (Totally Optional)
 ```bash
