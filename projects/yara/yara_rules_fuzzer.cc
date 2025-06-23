@@ -65,7 +65,12 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
     // 3. Attempt to load YARA rules from our custom stream.
     // The core of the fuzzer: we feed arbitrary data and see how YARA handles it.
     // We don't print errors here; the fuzzer engine will detect crashes/hangs.
-    if (yr_rules_load_stream(&ys, &rules) == ERROR_SUCCESS) {
+    if (yr_rules_load_stream(&ys, &rules) == ERROR_SUCCESS ||
+    yr_rules_load_stream(&ys, &rules) == ERROR_INSUFICIENT_MEMORY ||
+    yr_rules_load_stream(&ys, &rules) == ERROR_INVALID_FILE ||
+    yr_rules_load_stream(&ys, &rules) == ERROR_CORRUPT_FILE ||
+    yr_rules_load_stream(&ys, &rules) == ERROR_UNSUPPORTED_FILE_VERSION)
+ {
         // If rules were successfully loaded (i.e., the input was valid YARA syntax),
         // we must destroy them to free memory and prevent leaks during long fuzzing runs.
         yr_rules_destroy(rules);

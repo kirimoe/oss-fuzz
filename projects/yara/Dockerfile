@@ -34,9 +34,12 @@ RUN git clone --depth 1 https://github.com/VirusTotal/yara.git
 # Copy the build script and fuzzer source
 COPY build.sh $SRC/
 COPY yara_rules_fuzzer.cc $SRC/
+COPY *.options $SRC/
 
 # Set the working directory to /src
 WORKDIR $SRC
 
 # Run the build script
 # RUN bash build.sh
+
+COPY corpus $SRC/corpus

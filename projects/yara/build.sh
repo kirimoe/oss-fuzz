@@ -19,8 +19,9 @@ set -e
 
 cd $SRC/yara
 
-echo "Listing files in current directory:"
-ls -al
+echo "Contents of corpus directory:"
+ls -l $SRC/corpus
+
 
 # Prepare the build
 ./bootstrap.sh
@@ -33,6 +34,8 @@ make clean
 make -j$(nproc) all
 make install
 
+
+
 # Build your specific fuzz target
 FUZZER_SRC=$SRC/yara_rules_fuzzer.cc
 FUZZER_BIN=$OUT/yara_rules_fuzzer
@@ -41,3 +44,16 @@ FUZZER_BIN=$OUT/yara_rules_fuzzer
 $CXX $CXXFLAGS -std=c++11 -I$SRC/yara/libyara/include \
     $FUZZER_SRC -o $FUZZER_BIN \
     /usr/local/lib/libyara.a $LIB_FUZZING_ENGINE
+
+cd $SRC/corpus
+zip -r -q /out/yara_rules_fuzzer_seed_corpus.zip .
+
+
+ls -lh $OUT/yara_rules_fuzzer_seed_corpus.zip
+
+
+# mkdir -p /out/yara_rules_fuzzer
+# cp -r $SRC/corpus/* $OUT/yara_rules_fuzzer/
+
+
+cp $SRC/*.options $OUT/

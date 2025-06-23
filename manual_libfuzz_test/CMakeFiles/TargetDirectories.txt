@@ -1,3 +1,0 @@
-/home/kanra/oss-fuzz/manual_libfuzz_test/CMakeFiles/fuzz_test_code.dir
-/home/kanra/oss-fuzz/manual_libfuzz_test/CMakeFiles/edit_cache.dir
-/home/kanra/oss-fuzz/manual_libfuzz_test/CMakeFiles/rebuild_cache.dir

@@ -14,10 +14,10 @@ architectures:
 main_repo: "https://github.com/VirusTotal/yara"
 
 
-# Optional: specify seed corpus (if you have one)
-seed_corpus:
-  - ./build/corpus/yara/yara_rules_fuzzer
+# # Optional: specify seed corpus (if you have one)
+# seed_corpus:
+#   - ./build/corpus/yara/yara_rules_fuzzer
 
 # Optional: specify fuzz targets (if you have multiple)
-fuzz_targets:
-  - ./projects/yara/yara_rules_fuzzer
+# fuzz_targets:
+#   - ./projects/yara/yara_rules_fuzzer
