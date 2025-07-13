@@ -26,8 +26,12 @@ ls -l $SRC/corpus
 # Prepare the build
 ./bootstrap.sh
 
-# Configure with options you want to enable
-./configure --enable-macho --enable-debug --enable-dex --enable-dotnet --without-crypto
+# Configure with options you want to enable (Previous Configuration)
+#./configure --enable-macho --enable-debug --enable-dex --enable-dotnet --without-crypto
+
+# Configure with release-mode flags (disabling assertions) - for better fuzzing
+CFLAGS="-O2 -DNDEBUG" CXXFLAGS="-O2 -DNDEBUG" \
+./configure --enable-macho --enable-dex --enable-dotnet --without-crypto
 
 # Clean and build
 make clean
@@ -46,6 +50,7 @@ $CXX $CXXFLAGS -std=c++11 -I$SRC/yara/libyara/include \
     /usr/local/lib/libyara.a $LIB_FUZZING_ENGINE
 
 cd $SRC/corpus
+rm -f /out/yara_rules_fuzzer_seed_corpus.zip
 zip -r -q /out/yara_rules_fuzzer_seed_corpus.zip .
 
 
@@ -57,3 +62,5 @@ ls -lh $OUT/yara_rules_fuzzer_seed_corpus.zip
 
 
 cp $SRC/*.options $OUT/
+
+#ls /tmp/yara_rules_fuzzer_corpus

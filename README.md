@@ -24,13 +24,18 @@ sudo python3 infra/helper.py build_image yara
 ```bash
 sudo python3 infra/helper.py build_fuzzers yara
 ```
-##### If corpus directory not there make it
-```bash
-mkdir -p ~/oss-fuzz/build/corpus/yara/yara_rules_fuzzer
-```
-##### run the fuzzer
+##### Run the fuzzers (It will stop after finding a single crash)
+Use the -max_total_time=N option only if you want to run the fuzzer for specific amount of time
 ```bash
 sudo python3 infra/helper.py run_fuzzer yara yara_rules_fuzzer -- -max_total_time=30
+```
+##### Run the fuzzer for longer duration (Continue after the crash)
+```bash
+sudo python3 infra/helper.py run_fuzzer yara yara_rules_fuzzer -- -fork=1 -ignore_crashes=1
+```
+##### Run the fuzzer for longer duration (Continue after the crash) - Multithreading
+```bash
+sudo python3 infra/helper.py run_fuzzer yara yara_rules_fuzzer -- -jobs=4 -workers=4 -fork=1 -ignore_crashes=1
 ```
 ##### check the coverage (Totally Optional)
 ```bash

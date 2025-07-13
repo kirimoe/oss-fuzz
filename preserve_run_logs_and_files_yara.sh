@@ -1,29 +1,31 @@
 #!/bin/bash
+set -e
 
-# Define output directory
-OUTPUT_DIR=~/oss-fuzz/build/output/yara
+BASE_DIR="/home/kanra/oss-fuzz"
+OUT_DIR="$BASE_DIR/build/out/yara"
+ARCHIVE_DIR="$BASE_DIR/preserved_logs/logs_$(date +'%Y-%m-%d_%H-%M-%S')"
+BUG_DIR="$OUT_DIR/bug_tests"
 
-# Create an archive directory if it doesn't exist
-ARCHIVE_DIR=~/oss-fuzz/build/output/yara/archive
-mkdir -p $ARCHIVE_DIR
+echo "[*] Preparing to archive fuzzing output."
+echo "    Source: $OUT_DIR"
+echo "    → Destination: $ARCHIVE_DIR"
 
-# Check if crashes directory exists, then archive old crashes
-if [ -d "$OUTPUT_DIR/crashes" ]; then
-  timestamp=$(date +"%Y%m%d%H%M%S")
-  tar -czf $ARCHIVE_DIR/crashes_$timestamp.tar.gz -C $OUTPUT_DIR crashes
-fi
+# Create directory for bugs inside out/yara
+mkdir -p "$BUG_DIR"
 
-# Check if inputs directory exists, then archive old inputs
-if [ -d "$OUTPUT_DIR/inputs" ]; then
-  timestamp=$(date +"%Y%m%d%H%M%S")
-  tar -czf $ARCHIVE_DIR/inputs_$timestamp.tar.gz -C $OUTPUT_DIR inputs
-fi
+# Move all bug files into bug_tests
+mv "$OUT_DIR"/{crash-*,oom-*,leak-*} "$BUG_DIR" 2>/dev/null || echo "    [!] No bug files found to move."
 
-# Run the fuzzer (this will overwrite crashes and inputs directories)
-sudo python3 infra/helper.py run_fuzzer \
-  --corpus-dir=~/oss-fuzz/build/corpus/yara/yara_rules_fuzzer \
-  yara yara_rules_fuzzer \
-  -- -max_total_time=30 \
-  -output-dir=$OUTPUT_DIR
+# Create archive directory
+mkdir -p "$ARCHIVE_DIR"
 
-# Optionally, you can manually move any new crashes or inputs to the archive after this run
+# Move everything from out/yara to archive dir
+mv "$OUT_DIR"/* "$ARCHIVE_DIR"/
+
+echo "[✓] Archive complete:"
+echo "    → $ARCHIVE_DIR"
+
+# Clean out/yara
+rm -rf "$OUT_DIR"
+mkdir -p "$OUT_DIR"
+echo "    Cleaned: $OUT_DIR is ready for next fuzzing run."
